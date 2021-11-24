@@ -1,0 +1,28 @@
+name: Build Geant4
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Geant4 version to build'
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GEANT4_VERSION: "${{ github.event.inputs.version }}"
+      GEANT4_ARCHIVE: "geant4.${{ github.event.inputs.version }}-binaries.tar.gz"
+    steps:
+     - name: Check out repository code
+       uses: actions/checkout@v2
+     - name: Install packages
+       run: sudo apt-get install libxerces-c-dev
+     - name: Build Geant4
+       run: |
+         cd $HOME
+         $GITHUB_WORKSPACE/build.sh
+         tar czf $GITHUB_WORKSPACE/$GEANT4_ARCHIVE Geant4
+     - name: Upload binaries
+       uses: actions/upload-artifact@v2
+       with:
+         name: geant4.${{ github.event.inputs.version }}
+         path: ${{ env.GEANT4_ARCHIVE }}
