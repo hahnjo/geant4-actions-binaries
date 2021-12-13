@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GEANT4_VERSION: "${{ github.event.inputs.version }}"
-      GEANT4_ARCHIVE: "geant4.${{ github.event.inputs.version }}-binaries.tar.gz"
+      GEANT4_ARCHIVE: "${{ github.event.inputs.version }}-binaries.tar.gz"
     steps:
      - name: Check out repository code
        uses: actions/checkout@v2

@@ -8,7 +8,7 @@ if [ -z "$GEANT4_VERSION" ]; then
 fi
 
 # Download the source code.
-dir="geant4.$GEANT4_VERSION"
+dir="$GEANT4_VERSION"
 archive="$dir.tar.gz"
 url="https://geant4-data.web.cern.ch/releases/$archive"
 wget "$url"
