@@ -17,7 +17,7 @@ tar xf "$archive"
 # Build the libraries and install them, including the data files.
 mkdir build
 cd build
-cmake \
+cmake -G "Unix Makefiles" \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX=../Geant4 \
   -DGEANT4_INSTALL_DATA=ON \
