@@ -24,5 +24,5 @@ jobs:
      - name: Upload binaries
        uses: actions/upload-artifact@v2
        with:
-         name: geant4.${{ github.event.inputs.version }}
+         name: ${{ github.event.inputs.version }}
          path: ${{ env.GEANT4_ARCHIVE }}
