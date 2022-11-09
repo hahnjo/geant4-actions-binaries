@@ -13,7 +13,7 @@ jobs:
       GEANT4_ARCHIVE: "${{ github.event.inputs.version }}-binaries.tar.gz"
     steps:
      - name: Check out repository code
-       uses: actions/checkout@v2
+       uses: actions/checkout@v3
      - name: Install packages
        run: sudo apt-get install libxerces-c-dev
      - name: Build Geant4
@@ -22,7 +22,7 @@ jobs:
          $GITHUB_WORKSPACE/build.sh
          tar czf $GITHUB_WORKSPACE/$GEANT4_ARCHIVE Geant4
      - name: Upload binaries
-       uses: actions/upload-artifact@v2
+       uses: actions/upload-artifact@v3
        with:
          name: ${{ github.event.inputs.version }}
          path: ${{ env.GEANT4_ARCHIVE }}
